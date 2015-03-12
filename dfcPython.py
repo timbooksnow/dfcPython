@@ -165,14 +165,14 @@ class Application (Frame):
 
 
     def reveal(self):
-        #content = self.password.get()
-        #tcpdstat= "tcpdstat -c 100 "+ content
-        #f = os.popen(tcpdstat)
-        #message = f.read()
-        message = 'This is a MEssage from TCPDStat'
-        #print message
-        #print tcpdstat
-        #self.text.delete(0.0, END)
+        content = self.password.get()
+        tcpdstat= "tcpdstat -c 100 "+ content
+        f = os.popen(tcpdstat)
+        message = f.read()
+        #message = 'This is a MEssage from TCPDStat'
+        print message
+        print tcpdstat
+        self.text.delete(0.0, END)
         self.text.insert(0.0, message)
         self.st.settext(text=message)
 
