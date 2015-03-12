@@ -76,11 +76,13 @@ class Application (Frame):
 
         self.note.add(self.tab1, text = "Hasher")
         self.note.add(self.tab2, text = "TcpdStat")
-
         self.note.add(self.tab3, text = "TCPtrace")
         self.note.add(self.tab4, text = "Results Text")
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3d0031c1b792a2aa2a5cac6240e5aaafa41a2e31
         
         self.create_tab1()
         self.create_tab2()
@@ -102,7 +104,7 @@ class Application (Frame):
         self.submit_button=Button(self.tab1, command = lambda: self.change_bool(), text = "Hash")
         self.submit_button.grid(row=2, column=0)
         
-        self.spacer = Label(self.tab1, text = "                                            ")
+        self.spacer = Label(self.tab1, text = " ")
         self.spacer.grid(row=4, column=0, columnspan = 3)
         
         self.submit_button3=Button(self.tab1, command = lambda: self.get_directory(), text = "Get Directory to hash")
@@ -126,6 +128,7 @@ class Application (Frame):
         self.hashName.set(self.hashFileName)
         self.hashFileNameEntry.grid(row =9, column = 0, columnspan = 3, sticky = W)
 
+
     def create_tab2(self):
         # TcpdStat
         self.submit_button2=Button(self.tab2, command = lambda: self.get_file(), text = "Get File")
@@ -139,10 +142,6 @@ class Application (Frame):
 
         self.submit = Button(self.tab2, text="Submit", command = self.reveal)
         self.submit.grid(row= 14, column = 0, stick = W)
-
-  
-
-
 
         
     def create_tab3(self):
@@ -161,8 +160,8 @@ class Application (Frame):
 
         self.labelTCP = Label(self.tab3, text= "")
         self.labelTCP.grid(row= 14, column = 1, columnspan = 2, sticky = W)
-    
 
+    
         
     def create_tab4(self):
         # fill tab4
