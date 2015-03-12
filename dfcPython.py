@@ -80,14 +80,7 @@ class Application (Frame):
         self.note.add(self.tab3, text = "TCPtrace")
         self.note.add(self.tab4, text = "Results Text")
 
-<<<<<<< HEAD
-    
 
-
-=======
-        self.note.add(self.tab3, text = "Tab Three")
-        self.note.add(self.tab4, text = "Results Text")
->>>>>>> dae3e8816bb3e4a75c757ce40fc27f35deec1351
         
         self.create_tab1()
         self.create_tab2()
