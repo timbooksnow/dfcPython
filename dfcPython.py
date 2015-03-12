@@ -77,7 +77,7 @@ class Application (Frame):
         self.note.add(self.tab1, text = "Hasher")
         self.note.add(self.tab2, text = "TcpdStat")
         self.note.add(self.tab3, text = "Tab Three")
-        self.note.add(self.tab4, text = "Text Results")
+        self.note.add(self.tab4, text = "Results Text")
         
         self.create_tab1()
         self.create_tab2()
