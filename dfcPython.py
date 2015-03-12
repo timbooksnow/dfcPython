@@ -125,9 +125,20 @@ class Application (Frame):
 
         
     def create_tab3(self):
-        # fill tab3
-        self.exitButton = Button(self.tab3, text='Exit', command=self.onExit).pack(padx=100, pady=100)
+        self.submit_button2=Button(self.tab2, command = lambda: self.get_file(), text = "Get File")
+        self.submit_button2.grid(row=12, column=0)
+        self.instruction = Label(self.tab2, text= "Enter file location")
+        self.instruction.grid(row= 11, column = 1, columnspan = 2, sticky = W)
 
+        self.password = Entry(self.tab2)
+        self.password.grid(row =12, column = 1, sticky = W)
+
+
+        self.submit = Button(self.tab2, text="Submit", command = self.reveal)
+        self.submit.grid(row= 14, column = 0, stick = W)
+
+        self.text = Text(self.tab2, width = 35, height = 5, wrap = WORD)
+        self.text.grid(row =15, column =0, columnspan= 2, sticky = W)
         
     def create_tab4(self):
         # fill tab4
