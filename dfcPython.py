@@ -4,8 +4,8 @@ from Tkinter import *
 from ttk import *
 import tkFileDialog
 
-python = 'c:\Python27-x64\python'
-
+# python = 'c:\Python27-x64\python' # for windows
+python = 'python' # for linux
 
 class ScrolledText(Frame):
 
@@ -43,7 +43,7 @@ class Application (Frame):
     windir = 'C:\\Users\\timbooks\\Desktop\\HasherTestArea' # Dir path on a windows machine
        
     hashFileName = 'HashedStuff'
-    directoryToHash = windir
+    directoryToHash = lindir
     st=''
     
     found = False
@@ -78,11 +78,7 @@ class Application (Frame):
         self.note.add(self.tab2, text = "TcpdStat")
         self.note.add(self.tab3, text = "TCPtrace")
         self.note.add(self.tab4, text = "Results Text")
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 3d0031c1b792a2aa2a5cac6240e5aaafa41a2e31
         
         self.create_tab1()
         self.create_tab2()
@@ -105,10 +101,10 @@ class Application (Frame):
         self.submit_button.grid(row=2, column=0)
         
         self.spacer = Label(self.tab1, text = " ")
-        self.spacer.grid(row=4, column=0, columnspan = 3)
+        self.spacer.grid(row=3, column=0, columnspan = 3)
         
         self.submit_button3=Button(self.tab1, command = lambda: self.get_directory(), text = "Get Directory to hash")
-        self.submit_button3.grid(row=3, column=0)
+        self.submit_button3.grid(row=4, column=0, sticky = W)
         
         self.DirectoryLabel = Label(self.tab1, text = "The Directory which will be hashed: ")
         self.DirectoryLabel.grid(row=5, column=0, columnspan = 2, sticky = W)
@@ -201,8 +197,10 @@ class Application (Frame):
     def import_file(self):
         print self.hashFileName
         print self.directoryToHash
+        self.hashFileName = self.hashFileNameEntry.get()
         if (self.found):
-            os.system('hash.py "' + self.hashFileName + '" "' + self.directoryToHash +'"')    
+            os.system(python + ' hash.py "' + self.hashFileName + '" "' + self.directoryToHash +'"') 
+        self.st.settext(self.hashFileName + '.csv')
 
 
     def reveal(self):
