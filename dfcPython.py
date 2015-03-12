@@ -76,6 +76,10 @@ class Application (Frame):
 
         self.note.add(self.tab1, text = "Hasher")
         self.note.add(self.tab2, text = "TcpdStat")
+
+        self.note.add(self.tab3, text = "TCPtrace")
+        self.note.add(self.tab4, text = "Results Text")
+
         self.note.add(self.tab3, text = "Tab Three")
         self.note.add(self.tab4, text = "Results Text")
         
@@ -137,15 +141,28 @@ class Application (Frame):
         self.submit = Button(self.tab2, text="Submit", command = self.reveal)
         self.submit.grid(row= 14, column = 0, stick = W)
 
-        self.text = Text(self.tab2, width = 35, height = 5, wrap = WORD)
-        self.text.grid(row =15, column =0, columnspan= 2, sticky = W)
+  
 
 
 
         
     def create_tab3(self):
-        # fill tab3
-        self.exitButton = Button(self.tab3, text='Exit', command=self.onExit).pack(padx=100, pady=100)
+        #TcpTrace
+        self.submit_button3=Button(self.tab3, command = lambda: self.get_tcptraceFile(), text = "Get File")
+        self.submit_button3.grid(row=12, column=0)
+
+        self.instruction = Label(self.tab3, text= "Enter file location")
+        self.instruction.grid(row= 11, column = 1, columnspan = 2, sticky = W)
+
+        self.password2 = Entry(self.tab3)
+        self.password2.grid(row =12, column = 1, sticky = W)
+
+        self.submit2 = Button(self.tab3, text="Submit", command = self.tcp_trace)
+        self.submit2.grid(row= 14, column = 0, stick = W)
+
+        self.labelTCP = Label(self.tab3, text= "")
+        self.labelTCP.grid(row= 14, column = 1, columnspan = 2, sticky = W)
+    
 
         
     def create_tab4(self):
@@ -164,6 +181,14 @@ class Application (Frame):
         print self.f
         self.password.delete(0, END)
         self.password.insert(0, self.f)
+
+
+    def get_tcptraceFile(self):
+        self.found = True
+        self.f = (tkFileDialog.askopenfilename(parent=self.master))
+        print self.f
+        self.password2.delete(0, END)
+        self.password2.insert(0, self.f)
         
         
     def get_directory(self):
@@ -190,9 +215,21 @@ class Application (Frame):
         #message = 'This is a MEssage from TCPDStat'
         print message
         print tcpdstat
-        self.text.delete(0.0, END)
-        self.text.insert(0.0, message)
         self.st.settext(text=message)
+
+
+    def tcp_trace(self):
+        content = self.password2.get()
+        print "this is content" + content
+        tcpTrace = "tcptrace -n -r " + content
+        f1 = os.popen(tcpTrace)
+        message = f1.read()
+        print message
+        print tcpTrace
+        self.st.settext(text=message)
+
+
+
 
         
     def onExit(self):
