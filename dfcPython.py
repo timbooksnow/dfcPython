@@ -44,7 +44,7 @@ class Application (Frame):
        
     hashFileName = 'HashedStuffHERE'
     directoryToHash = windir
-
+    st=''
     
     found = False
     def __init__(self, master):
@@ -121,13 +121,7 @@ class Application (Frame):
         self.text = Text(self.tab2, width = 35, height = 5, wrap = WORD)
         self.text.grid(row =15, column =0, columnspan= 2, sticky = W)
 
-        sbar = Scrollbar(self)
-        text = Text(self, relief=SUNKEN)
-        sbar.config(command=text.yview)               
-        text.config(yscrollcommand=sbar.set)           
-        sbar.pack(side=RIGHT, fill=Y)                 
-        text.pack(side=LEFT, expand=YES, fill=BOTH)  
-        self.text = text
+        
 
         
     def create_tab3(self):
@@ -137,7 +131,7 @@ class Application (Frame):
         
     def create_tab4(self):
         # fill tab4
-        st = ScrolledText(parent=self.tab4,text='')
+        self.st = ScrolledText(parent=self.tab4,text='')
 
 
     def change_bool(self):
@@ -178,7 +172,7 @@ class Application (Frame):
         print tcpdstat
         self.text.delete(0.0, END)
         self.text.insert(0.0, message)
-
+        self.st.settext(text=message)
         
     def onExit(self):
         self.master.destroy()
