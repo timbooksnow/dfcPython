@@ -42,7 +42,7 @@ class Application (Frame):
     lindir = '/home/beast/hash' # Linux dir 
     windir = 'C:\\Users\\timbooks\\Desktop\\HasherTestArea' # Dir path on a windows machine
        
-    hashFileName = 'HashedStuffHERE'
+    hashFileName = 'HashedStuff'
     directoryToHash = windir
     st=''
     
@@ -80,9 +80,14 @@ class Application (Frame):
         self.note.add(self.tab3, text = "TCPtrace")
         self.note.add(self.tab4, text = "Results Text")
 
+<<<<<<< HEAD
     
 
 
+=======
+        self.note.add(self.tab3, text = "Tab Three")
+        self.note.add(self.tab4, text = "Results Text")
+>>>>>>> dae3e8816bb3e4a75c757ce40fc27f35deec1351
         
         self.create_tab1()
         self.create_tab2()
@@ -99,16 +104,34 @@ class Application (Frame):
 
         self.title.grid(row=0, column=0)
         self.thelabel = Label(self.tab1, text = "Press to Hash Folder")
-        self.thelabel.grid(row=1, column=0)  
+        self.thelabel.grid(row=1, column=0)
+        
         self.submit_button=Button(self.tab1, command = lambda: self.change_bool(), text = "Hash")
         self.submit_button.grid(row=2, column=0)
+        
+        self.spacer = Label(self.tab1, text = "                                            ")
+        self.spacer.grid(row=4, column=0, columnspan = 3)
+        
         self.submit_button3=Button(self.tab1, command = lambda: self.get_directory(), text = "Get Directory to hash")
         self.submit_button3.grid(row=3, column=0)
+        
         self.DirectoryLabel = Label(self.tab1, text = "The Directory which will be hashed: ")
-        self.DirectoryLabel.grid(row=4, column=0, columnspan = 2) 
-        self.DirectoryLabel = Label(self.tab1, text = self.directoryToHash)
-        self.DirectoryLabel.grid(row=5, column=0, columnspan=2) 
-
+        self.DirectoryLabel.grid(row=5, column=0, columnspan = 2, sticky = W)
+        
+        self.dirValue = StringVar()
+        self.DirectoryLabel = Entry(self.tab1, textvariable=self.dirValue, width=50)
+        self.DirectoryLabel.grid(row=6, column=0, columnspan = 3, sticky = W)
+        self.dirValue.set(self.directoryToHash)
+        
+        self.spacer = Label(self.tab1, text = " ")
+        self.spacer.grid(row=7, column=0, columnspan = 2)
+        
+        self.DirectoryLabel = Label(self.tab1, text = "The name of the hash file: ")
+        self.DirectoryLabel.grid(row=8, column=0, columnspan = 2, sticky = W)
+        self.hashName = StringVar()
+        self.hashFileNameEntry = Entry(self.tab1, textvariable=self.hashName, width=50)
+        self.hashName.set(self.hashFileName)
+        self.hashFileNameEntry.grid(row =9, column = 0, columnspan = 3, sticky = W)
 
     def create_tab2(self):
         # TcpdStat
@@ -125,6 +148,8 @@ class Application (Frame):
         self.submit.grid(row= 14, column = 0, stick = W)
 
   
+
+
 
         
     def create_tab3(self):
