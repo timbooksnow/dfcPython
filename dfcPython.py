@@ -89,7 +89,7 @@ class Application (Frame):
 
 
     def create_tab1(self):
-        # create hash buttons 
+        # Hasher
         self.title = Label(self.tab1, text= "WELCOME TO THE DFC")
 
         self.title.grid(row=0, column=0)
@@ -106,6 +106,7 @@ class Application (Frame):
 
 
     def create_tab2(self):
+        # TcpdStat
         self.submit_button2=Button(self.tab2, command = lambda: self.get_file(), text = "Get File")
         self.submit_button2.grid(row=12, column=0)
         self.instruction = Label(self.tab2, text= "Enter file location")
@@ -120,8 +121,6 @@ class Application (Frame):
 
         self.text = Text(self.tab2, width = 35, height = 5, wrap = WORD)
         self.text.grid(row =15, column =0, columnspan= 2, sticky = W)
-
-        
 
         
     def create_tab3(self):
@@ -168,11 +167,13 @@ class Application (Frame):
         tcpdstat= "tcpdstat -c 100 "+ content
         f = os.popen(tcpdstat)
         message = f.read()
+        #message = 'This is a MEssage from TCPDStat'
         print message
         print tcpdstat
         self.text.delete(0.0, END)
         self.text.insert(0.0, message)
         self.st.settext(text=message)
+
         
     def onExit(self):
         self.master.destroy()
