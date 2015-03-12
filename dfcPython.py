@@ -89,7 +89,7 @@ class Application (Frame):
 
 
     def create_tab1(self):
-        # create hash buttons 
+        # Hasher
         self.title = Label(self.tab1, text= "WELCOME TO THE DFC")
 
         self.title.grid(row=0, column=0)
@@ -106,6 +106,7 @@ class Application (Frame):
 
 
     def create_tab2(self):
+        # TcpdStat
         self.submit_button2=Button(self.tab2, command = lambda: self.get_file(), text = "Get File")
         self.submit_button2.grid(row=12, column=0)
         self.instruction = Label(self.tab2, text= "Enter file location")
