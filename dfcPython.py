@@ -4,8 +4,8 @@ from Tkinter import *
 from ttk import *
 import tkFileDialog
 
-# python = 'c:\Python27-x64\python' # for windows
-python = 'python' # for linux
+python = 'c:\Python27-x64\python' # for windows
+#python = 'python' # for linux
 
 class ScrolledText(Frame):
 
@@ -110,15 +110,15 @@ class Application (Frame):
         self.DirectoryLabel.grid(row=5, column=0, columnspan = 2, sticky = W)
         
         self.dirValue = StringVar()
-        self.DirectoryLabel = Entry(self.tab1, textvariable=self.dirValue, width=50)
-        self.DirectoryLabel.grid(row=6, column=0, columnspan = 3, sticky = W)
+        self.DirectoryEntry = Entry(self.tab1, textvariable=self.dirValue, width=50)
+        self.DirectoryEntry.grid(row=6, column=0, columnspan = 3, sticky = W)
         self.dirValue.set(self.directoryToHash)
         
         self.spacer = Label(self.tab1, text = " ")
         self.spacer.grid(row=7, column=0, columnspan = 2)
         
-        self.DirectoryLabel = Label(self.tab1, text = "The name of the hash file: ")
-        self.DirectoryLabel.grid(row=8, column=0, columnspan = 2, sticky = W)
+        self.DirectoryLabel2 = Label(self.tab1, text = "The name of the hash file: ")
+        self.DirectoryLabel2.grid(row=8, column=0, columnspan = 2, sticky = W)
         self.hashName = StringVar()
         self.hashFileNameEntry = Entry(self.tab1, textvariable=self.hashName, width=50)
         self.hashName.set(self.hashFileName)
@@ -190,8 +190,8 @@ class Application (Frame):
         self.d = (tkFileDialog.askdirectory(parent=self.master))
         print self.d
         self.directoryToHash = self.d
-        self.DirectoryLabel = Label(self.tab1, text = self.directoryToHash)
-        self.DirectoryLabel.grid(row=5, column=0, columnspan=2) 
+        self.DirectoryEntry.delete(0, END)
+        self.DirectoryEntry.insert(0, self.directoryToHash)
 
 
     def import_file(self):
